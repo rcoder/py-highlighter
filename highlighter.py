@@ -21,7 +21,7 @@ class highlight:
     return self._process(src)
 
   def _process(self, src):
-    params = web.input(bare='0', wrap='src',lineno='1')
+    params = web.input(bare='0', wrap='code',lineno='0')
     lang = params['lang']
     wrap = params['wrap']
     bare = int(params['bare'])
@@ -41,7 +41,7 @@ class highlight:
 
 class style:
   def GET(self):
-    elem_class = web.input(wrap='source')['wrap']
+    elem_class = web.input(wrap='code')['wrap']
     web.header('Content-Type', 'text/css')
     return pygments.formatters.HtmlFormatter().get_style_defs('.'+elem_class)
 
